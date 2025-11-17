@@ -61,6 +61,15 @@ export default function AppNavbar({
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
+              {currentUser && currentUser.loggedIn ? (
+                <>
+                  <Nav.Link as={Link} to="/recommendationrequest/create">
+                    Recommendation Request
+                  </Nav.Link>
+                </>
+              ) : (
+                <></>
+              )}
               {hasRole(currentUser, "ROLE_PROFESSOR") && (
                 <>
                   <Nav.Link as={Link} to="/requesttypes/all">
@@ -97,3 +106,4 @@ export default function AppNavbar({
     </>
   );
 }
+
