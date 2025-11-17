@@ -43,7 +43,7 @@ describe("AppNavbar tests", () => {
   });
 
 test("renders the recommendation requests for logged in users", async () => {
-    const currentUser = currentUserFixtures.studentUser;
+    const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
     const doLogin = vi.fn();
 

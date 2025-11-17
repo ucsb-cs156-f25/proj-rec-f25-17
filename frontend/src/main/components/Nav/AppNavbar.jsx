@@ -61,6 +61,15 @@ export default function AppNavbar({
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
+              {currentUser && currentUser.loggedIn ? (
+                <>
+                  <Nav.Link as={Link} to="/requests/create">
+                    Recommendation Request
+                  </Nav.Link>
+                </>
+              ) : (
+                <></>
+              )}
               {hasRole(currentUser, "ROLE_PROFESSOR") && (
                 <>
                   <Nav.Link as={Link} to="/requesttypes/all">
@@ -86,9 +95,6 @@ export default function AppNavbar({
                     Welcome, {currentUser.root.user.email}
                   </Navbar.Text>
                   <Button onClick={doLogout}>Log Out</Button>
-                  <Nav.Link as={Link} to="/requests/create">
-                    Recommendation Request
-                  </Nav.Link>
                 </>
               ) : (
                 <Button href={oauthLogin}>Log In</Button>
@@ -100,3 +106,4 @@ export default function AppNavbar({
     </>
   );
 }
+
