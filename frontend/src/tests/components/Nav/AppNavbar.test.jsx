@@ -42,6 +42,40 @@ describe("AppNavbar tests", () => {
     expect(adminMenu).toBeInTheDocument();
   });
 
+  test("UCSB Rec renders correctly for regular logged in user", async () => {
+    const currentUser = currentUserFixtures.userOnly;
+    const doLogin = vi.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <AppNavbar currentUser={currentUser} doLogin={doLogin} />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await screen.findByText("UCSB Rec");
+    const pendingLink = screen.getByText("UCSB Rec");
+    expect(pendingLink).toBeInTheDocument();
+  });
+
+  test("UCSB Rec renders correctly for admin user", async () => {
+    const currentUser = currentUserFixtures.adminUser;
+    const doLogin = vi.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <AppNavbar currentUser={currentUser} doLogin={doLogin} />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await screen.findByText("UCSB Rec");
+    const pendingLink = screen.getByText("UCSB Rec");
+    expect(pendingLink).toBeInTheDocument();
+  });
+
   test("renders the recommendation requests for logged in users", async () => {
     const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
