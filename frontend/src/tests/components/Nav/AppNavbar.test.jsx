@@ -42,7 +42,7 @@ describe("AppNavbar tests", () => {
     expect(adminMenu).toBeInTheDocument();
   });
 
-test("renders the recommendation requests for logged in users", async () => {
+  test("renders the recommendation requests for logged in users", async () => {
     const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
     const doLogin = vi.fn();
@@ -81,9 +81,10 @@ test("renders the recommendation requests for logged in users", async () => {
       </QueryClientProvider>,
     );
 
-    expect(screen.queryByText("Recommendation Request")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Recommendation Request"),
+    ).not.toBeInTheDocument();
   });
-
 
   test("renders H2Console and Swagger links correctly", async () => {
     const currentUser = currentUserFixtures.adminUser;
