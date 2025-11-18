@@ -59,9 +59,6 @@ describe("AppNavbar tests", () => {
     expect(pendingLink).toBeInTheDocument();
   });
 
-
-
-
   test("request types renders correctly for admin user", async () => {
     const currentUser = currentUserFixtures.adminUser;
     const doLogin = vi.fn();
@@ -96,13 +93,8 @@ describe("AppNavbar tests", () => {
       </QueryClientProvider>,
     );
 
-    expect(
-      screen.queryByText("Request Types"),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText("Request Types")).not.toBeInTheDocument();
   });
-
-
-
 
   test("UCSB Rec renders correctly for admin user", async () => {
     const currentUser = currentUserFixtures.adminUser;
