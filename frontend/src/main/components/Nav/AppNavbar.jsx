@@ -69,15 +69,6 @@ export default function AppNavbar({
                 </>
               )}
 
-              {currentUser && currentUser.loggedIn ? (
-                <>
-                  <Nav.Link as={Link} to="/requests/create">
-                    Recommendation Request
-                  </Nav.Link>
-                </>
-              ) : (
-                <></>
-              )}
               {hasRole(currentUser, "ROLE_PROFESSOR") && (
                 <>
                   <Nav.Link as={Link} to="/requesttypes/all">
