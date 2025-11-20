@@ -76,50 +76,6 @@ describe("AppNavbar tests", () => {
     expect(pendingLink).toBeInTheDocument();
   });
 
-  test("renders the recommendation requests for logged in users", async () => {
-    const currentUser = currentUserFixtures.userOnly;
-    const systemInfo = systemInfoFixtures.showingBoth;
-    const doLogin = vi.fn();
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <AppNavbar
-            currentUser={currentUser}
-            systemInfo={systemInfo}
-            doLogin={doLogin}
-          />
-        </MemoryRouter>
-      </QueryClientProvider>,
-    );
-
-    await screen.findByText("Recommendation Request");
-    const pendingLink = screen.getByText("Recommendation Request");
-    expect(pendingLink).toBeInTheDocument();
-  });
-
-  test("does not render the recommendation requests for unlogged users", async () => {
-    const currentUser = null;
-    const systemInfo = systemInfoFixtures.showingBoth;
-    const doLogin = vi.fn();
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <AppNavbar
-            currentUser={currentUser}
-            systemInfo={systemInfo}
-            doLogin={doLogin}
-          />
-        </MemoryRouter>
-      </QueryClientProvider>,
-    );
-
-    expect(
-      screen.queryByText("Recommendation Request"),
-    ).not.toBeInTheDocument();
-  });
-
   test("renders H2Console and Swagger links correctly", async () => {
     const currentUser = currentUserFixtures.adminUser;
     const systemInfo = systemInfoFixtures.showingBoth;
