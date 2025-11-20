@@ -25,7 +25,7 @@ export default function AppNavbar({
       >
         <Container>
           <Navbar.Brand as={Link} to="/">
-           Vite + React
+           Example
           </Navbar.Brand>
 
           <Navbar.Toggle />
