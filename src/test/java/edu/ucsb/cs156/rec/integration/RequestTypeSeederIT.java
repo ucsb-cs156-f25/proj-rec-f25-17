@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class RequestTypeSeederTests {
+public class RequestTypeSeederIT {
 
   @Autowired private RequestTypeRepository requestTypeRepository;
 
