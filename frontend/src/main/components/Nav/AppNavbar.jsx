@@ -25,7 +25,7 @@ export default function AppNavbar({
       >
         <Container>
           <Navbar.Brand as={Link} to="/">
-            UCSB Rec
+            Example
           </Navbar.Brand>
 
           <Navbar.Toggle />
@@ -60,6 +60,13 @@ export default function AppNavbar({
                     Requests
                   </NavDropdown.Item>
                 </NavDropdown>
+              )}
+              {hasRole(currentUser, "ROLE_ADMIN") && (
+                <>
+                  <Nav.Link as={Link} to="/requesttypes/all">
+                    Request Types
+                  </Nav.Link>
+                </>
               )}
 
               {hasRole(currentUser, "ROLE_PROFESSOR") && (
