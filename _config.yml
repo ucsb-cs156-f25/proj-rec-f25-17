@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f25/proj-rec-f25-17
 owner: ucsb-cs156-f25
 repo_name: proj-rec-f25-17
-pull_requests: [{"author":{"id":"U_kgDOCq2YEQ","is_bot":false,"login":"Gupperfisher","name":""},"headRefName":"preset-request-Types","number":11,"title":"hardcoded request types","url":"https://github.com/ucsb-cs156-f25/proj-rec-f25-17/pull/11"},{"author":{"id":"U_kgDOCq2YEQ","is_bot":false,"login":"Gupperfisher","name":""},"headRefName":"multiple-h2-Connections-v2","number":10,"title":"Multiple h2 connections v2","url":"https://github.com/ucsb-cs156-f25/proj-rec-f25-17/pull/10"}]
+pull_requests: [{"author":{"id":"U_kgDOCq2YEQ","is_bot":false,"login":"Gupperfisher","name":""},"headRefName":"preset-request-Types","number":11,"title":"hardcoded request types","url":"https://github.com/ucsb-cs156-f25/proj-rec-f25-17/pull/11"}]
