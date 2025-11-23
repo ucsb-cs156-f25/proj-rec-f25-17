@@ -5,9 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import edu.ucsb.cs156.rec.repositories.RequestTypeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@DataJpaTest
+@Import(RequestTypeSeeder.class)
+@TestPropertySource(properties = "spring.liquibase.enabled=false")
 public class RequestTypeSeederIT {
 
   @Autowired private RequestTypeRepository requestTypeRepository;
