@@ -9,58 +9,60 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class RequestTypeSeederIT {
-  
-    @Autowired
-    private RequestTypeRepository requestTypeRepository;
 
-    @Autowired
-    private RequestTypeSeeder requestTypeSeeder;
+  @Autowired private RequestTypeRepository requestTypeRepository;
 
-    @Test
-    public void testSeederInsertsTypeOneRequestType() {
-        requestTypeRepository.deleteAll();
-        requestTypeSeeder.run();
+  @Autowired private RequestTypeSeeder requestTypeSeeder;
 
-        var result = requestTypeRepository.findByRequestType("CS Department BS/MS program");
-        assertTrue(result.isPresent(), "CS Department BS/MS program RequestType should be seeded");
-    }
+  @Test
+  public void testSeederInsertsTypeOneRequestType() {
+    requestTypeRepository.deleteAll();
+    requestTypeSeeder.run();
 
-    @Test
-    public void testSeederInsertsTypeTwoRequestType() {
-          requestTypeRepository.deleteAll();
-          requestTypeSeeder.run();
+    var result = requestTypeRepository.findByRequestType("CS Department BS/MS program");
+    assertTrue(result.isPresent(), "CS Department BS/MS program RequestType should be seeded");
+  }
 
-        var result = requestTypeRepository.findByRequestType("Scholarship or Fellowship");
-        assertTrue(result.isPresent(), "Scholarship or Fellowship RequestType should be seeded");
-    }
+  @Test
+  public void testSeederInsertsTypeTwoRequestType() {
+    requestTypeRepository.deleteAll();
+    requestTypeSeeder.run();
 
-    @Test
-    public void testSeederInsertsTypeThreeRequestType() {
-          requestTypeRepository.deleteAll();
-          requestTypeSeeder.run();
+    var result = requestTypeRepository.findByRequestType("Scholarship or Fellowship");
+    assertTrue(result.isPresent(), "Scholarship or Fellowship RequestType should be seeded");
+  }
 
-        var result = requestTypeRepository.findByRequestType("MS program (other than CS Dept BS/MS)");
-        assertTrue(result.isPresent(), "MS program (other than CS Dept BS/MS) RequestType should be seeded");
-    }
-    @Test
-    public void testSeederInsertsTypeFourRequestType() {
-          requestTypeRepository.deleteAll();
-          requestTypeSeeder.run();
+  @Test
+  public void testSeederInsertsTypeThreeRequestType() {
+    requestTypeRepository.deleteAll();
+    requestTypeSeeder.run();
 
-        var result = requestTypeRepository.findByRequestType("PhD program");
-        assertTrue(result.isPresent(), "PhD program");
-    }
-    
-    @Test
-    public void testSeederDoesNotInsertDuplicates(){
+    var result = requestTypeRepository.findByRequestType("MS program (other than CS Dept BS/MS)");
+    assertTrue(
+        result.isPresent(), "MS program (other than CS Dept BS/MS) RequestType should be seeded");
+  }
 
-        long initialCount = requestTypeRepository.count();
+  @Test
+  public void testSeederInsertsTypeFourRequestType() {
+    requestTypeRepository.deleteAll();
+    requestTypeSeeder.run();
 
-        requestTypeSeeder.run();
+    var result = requestTypeRepository.findByRequestType("PhD program");
+    assertTrue(result.isPresent(), "PhD program");
+  }
 
-        long afterSecondRun = requestTypeRepository.count();
+  @Test
+  public void testSeederDoesNotInsertDuplicates() {
 
-        assertEquals(initialCount, afterSecondRun, 
+    long initialCount = requestTypeRepository.count();
+
+    requestTypeSeeder.run();
+
+    long afterSecondRun = requestTypeRepository.count();
+
+    assertEquals(
+        initialCount,
+        afterSecondRun,
         "Seeder should not insert duplicates when run multiple times");
-    }
+  }
 }
