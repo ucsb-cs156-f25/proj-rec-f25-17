@@ -42,24 +42,7 @@ describe("AppNavbar tests", () => {
     expect(adminMenu).toBeInTheDocument();
   });
 
-  test("UCSB Rec renders correctly for regular logged in user", async () => {
-    const currentUser = currentUserFixtures.userOnly;
-    const doLogin = vi.fn();
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <AppNavbar currentUser={currentUser} doLogin={doLogin} />
-        </MemoryRouter>
-      </QueryClientProvider>,
-    );
-
-    await screen.findByText("UCSB Rec");
-    const pendingLink = screen.getByText("UCSB Rec");
-    expect(pendingLink).toBeInTheDocument();
-  });
-
-  test("UCSB Rec renders correctly for admin user", async () => {
+  test("request types renders correctly for admin user", async () => {
     const currentUser = currentUserFixtures.adminUser;
     const doLogin = vi.fn();
 
@@ -71,9 +54,29 @@ describe("AppNavbar tests", () => {
       </QueryClientProvider>,
     );
 
-    await screen.findByText("UCSB Rec");
-    const pendingLink = screen.getByText("UCSB Rec");
+    await screen.findByText("Request Types");
+    const pendingLink = screen.getByText("Request Types");
     expect(pendingLink).toBeInTheDocument();
+  });
+
+  test("request types does Not render for normal users", async () => {
+    const currentUser = currentUserFixtures.userOnly;
+    const systemInfo = systemInfoFixtures.showingBoth;
+    const doLogin = vi.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <AppNavbar
+            currentUser={currentUser}
+            systemInfo={systemInfo}
+            doLogin={doLogin}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    expect(screen.queryByText("Request Types")).not.toBeInTheDocument();
   });
 
   test("renders H2Console and Swagger links correctly", async () => {
