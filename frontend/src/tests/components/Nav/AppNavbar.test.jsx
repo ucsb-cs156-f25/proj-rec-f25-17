@@ -122,7 +122,7 @@ describe("AppNavbar tests", () => {
 
     expect(screen.queryByText("Request Types")).not.toBeInTheDocument();
   });
-    test("UCSB Rec renders correctly for regular logged in user", async () => {
+  test("UCSB Rec renders correctly for regular logged in user", async () => {
     const currentUser = currentUserFixtures.userOnly;
     const doLogin = vi.fn();
 
