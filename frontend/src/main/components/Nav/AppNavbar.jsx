@@ -25,7 +25,7 @@ export default function AppNavbar({
       >
         <Container>
           <Navbar.Brand as={Link} to="/">
-            UCSB Rec
+            UCSB
           </Navbar.Brand>
 
           <Navbar.Toggle />
