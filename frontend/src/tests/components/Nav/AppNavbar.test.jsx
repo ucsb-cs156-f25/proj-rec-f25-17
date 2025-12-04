@@ -42,7 +42,7 @@ describe("AppNavbar tests", () => {
     expect(adminMenu).toBeInTheDocument();
   });
 
- test("renders the recommendation requests for logged in users", async () => {
+  test("renders the recommendation requests for logged in users", async () => {
     const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
     const doLogin = vi.fn();
